@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Forecast</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Sales Forecast for Product </h1>
+    <form method="GET" action="{% url 'index' %}">
+        <label for="product_id">Select Product:</label>
+        <select name="product_id" id="product_id">
+            <option value="1">Product 1</option>
+            <option value="2" selected>Product 2</option>
+            <option value="3">Product 3</option>
+            <option value="4">Product 4</option>
+        </select>
+        <button type="submit">Forecast</button>
+    </form>
+    
+    <canvas id="forecastChart"></canvas>
+
+    <script>
+        // Fetch forecast data from Django
+        fetch('/forecast-data/')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.date);
+                const salesData = data.map(item => item.forecasted_sales);
+
+                const ctx = document.getElementById('forecastChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Forecasted Sales',
+                            data: salesData,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 2,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'month'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
