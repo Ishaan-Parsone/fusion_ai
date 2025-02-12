@@ -1,0 +1,52 @@
+1. Extract relevant information from the image of the invoice.
+2. Don't include anyting except the JSON
+3. Fill in the required fields in the JSON format. If a field is not identifiable in the invoice image, assign that field a value of `NULL`.
+4. STRICTLY provide the output in the exact JSON structure provided. Do not include any explanations or other formats.
+
+I REPEAT, STRICTLY PROVIDE THE OUTPUT IN THE EXACT JSON.
+Only Include JSON. No explanations or answers.
+
+Example Output
+YOU NEED TO PROVIDE THE OUTPUT ACCORDING TO THE IMAGE. PERIOD. USE THIS FOR REFERENCE ONLY
+
+
+```
+{
+  "invoice": {
+    "invoice_id": "<string or NULL>",
+    "invoice_number": "<string or NULL>",
+    "issue_date": "<YYYY-MM-DD or NULL>",
+    "due_date": "<YYYY-MM-DD or NULL>",
+    "currency": "<string or NULL>",
+    "total_amount": <float or NULL>,
+    "tax_amount": <float or NULL>,
+    "discount_amount": <float or NULL>,
+    "subtotal": <float or NULL>,
+    "balance_due": <float or NULL>,
+    "sender": {
+      "name": "<string or NULL>",
+      "address": "<string or NULL>",
+      "phone": "<string or NULL>",
+      "email": "<string or NULL>"
+    },
+    "receiver": {
+      "name": "<string or NULL>",
+      "address": "<string or NULL>",
+      "phone": "<string or NULL>",
+      "email": "<string or NULL>"
+    },
+    "items": [
+      {
+        "description": "<string or NULL>",
+        "quantity": <int or NULL>,
+        "unit_price": <float or NULL>,
+        "total": <float or NULL>
+      }
+    ],   
+  }
+}
+
+```
+Important Notes:
+1. The output must STRICTLY follow the exact JSON format as shown above.
+2. Please exclude any kind of explanations
