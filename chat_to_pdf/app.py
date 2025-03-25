@@ -55,20 +55,26 @@ for message in st.session_state.messages:
 uploaded_file = st.file_uploader("Upload a PDF document", type=["pdf"])
 
 if uploaded_file is not None:
-
-    pdf_document = fitz.open(stream=uploaded_file.read(), filetype="pdf")  
-    pdf_content = ""
+    pdf_bytes = uploaded_file.read()  # Read file content as bytes
     
-    for page_num in range(len(pdf_document)):
-        page = pdf_document[page_num]
-        pdf_content += page.get_text()
+    if not pdf_bytes:
+        st.error("Uploaded PDF is empty!")
+    else:
+        pdf_stream = io.BytesIO(pdf_bytes)  # Wrap bytes in a stream
+        pdf_document = fitz.open(stream=pdf_stream, filetype="pdf")  
+        
+        pdf_content = ""
+        for page_num in range(len(pdf_document)):
+            page = pdf_document[page_num]
+            pdf_content += page.get_text()
 
-    if len(pdf_content) > 4500:
-        pdf_content = pdf_content[:4500]
+        if len(pdf_content) > 4500:
+            pdf_content = pdf_content[:4500]
 
-    pdf_document.close()
-    
-    st.success("PDF uploaded successfully! Content extracted.")
+        pdf_document.close()
+        
+        st.success("PDF uploaded successfully! Content extracted.")
+
 
     if prompt := st.chat_input("Ask a question about the PDF:"):
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -90,7 +96,7 @@ if uploaded_file is not None:
                         {"role": "user", "content": pdf_content},  
                         {"role": "user", "content": prompt}  
                     ],
-                    model="llama-3.1-70b-versatile",
+                    model="llama-3.3-70b-versatile",
                     temperature=0.6,
                     top_p=1,
                     stream=False,
