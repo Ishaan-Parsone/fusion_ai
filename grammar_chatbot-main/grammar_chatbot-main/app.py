@@ -78,7 +78,7 @@ if prompt:
                 {"role": "system", "content": system_prompt},
                 *[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
             ],
-            model="llama-3.1-70b-versatile",
+            model="llama-3.3-70b-versatile",
             temperature=0.6,
             top_p=1,
             stream=False,

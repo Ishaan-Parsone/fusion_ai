@@ -8,7 +8,7 @@ function App() {
     <>
      <BrowserRouter>
           <Routes>
-            <Route path="/receipt-scan" element={<ReceiptScan   />} />
+            <Route path="/" element={<ReceiptScan   />} />
 
           </Routes>
         </BrowserRouter>

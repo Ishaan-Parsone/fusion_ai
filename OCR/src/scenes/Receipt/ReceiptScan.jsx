@@ -219,7 +219,7 @@ export default function ReceiptScan() {
                 <Label htmlFor="jsonEditor">{mode === 'ocr' ? 'Extracted Text' : 'Editable JSON'}</Label>
                 <Textarea
                   id="jsonEditor"
-                  value={mode === 'ocr' ? outputJSON : JSON.stringify(outputJSON, null, 2)}
+                  value={outputJSON}
                   onChange={handleJSONChange}
                   rows={10}
                   placeholder={mode === 'ocr' ? "Extracted text will appear here" : "Enter or edit JSON here"}
