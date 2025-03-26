@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # Custom Vision
+  custom-vision:
+    build:
+      context: ./custom_vision
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - forecasting
+
+  # Forecasting
+  forecasting:
+    build:
+      context: ./forecasting
+    ports:
+      - "4000:4000"
+      - "8001:8001"
+    restart: always
+
+  # Grammar Chatbot
+  grammar-chatbot:
+    build: ./grammar_chatbot
+    ports:
+      - "8504:8504"
+    restart: always
+
+  # OCR Service
+  ocr:
+    build: ./OCR
+    ports:
+      - "5173:5173"
+    restart: always
+    depends_on:
+      - forecasting
+    environment:
+      - NODE_ENV=production
+
+  # Redact Service
+  redact:
+    build: ./redact
+    ports:
+      - "8502:8502"
+    restart: always
+
+  # Translator Chatbot
+  translator-chatbot:
+    build: ./translator_chatbot
+    ports:
+      - "8501:8501"
+    restart: always
+
+  # Chat to PDF
+  chat-to-pdf:
+    build: ./chat_to_pdf
+    ports:
+      - "8503:8503"
+    restart: always
