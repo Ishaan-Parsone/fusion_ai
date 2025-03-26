@@ -37,7 +37,7 @@ const SalesDashboard = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:8000/api/forecast-data/${selectedProduct}/`);
+        const response = await axios.get(`http://localhost:8001/api/forecast-data/${selectedProduct}/`);
         setForecastData(response.data);
         setError('');
       } catch (error) {

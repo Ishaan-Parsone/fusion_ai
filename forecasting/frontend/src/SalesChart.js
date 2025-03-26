@@ -20,7 +20,7 @@ const SalesChart = ({ productId }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/forecast-data/${productId}/`);
+                const response = await axios.get(`http://localhost:8001/api/forecast-data/${productId}/`);
                 const realSales = response.data.real_sales;
                 const forecastedSales = response.data.forecasted_sales;
 
