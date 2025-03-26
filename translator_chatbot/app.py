@@ -63,8 +63,8 @@ if "translations" not in st.session_state:
     st.session_state.translations = []
 
 # Dropdowns for language selection
-from_language = st.selectbox("Select source language", ["English", "Spanish", "French", "German", "Chinese", "Hindi"])
-to_language = st.selectbox("Select target language", ["Hindi", "Spanish", "French", "Marathi", "English"])
+from_language = st.selectbox("Select source language", ["English"])
+to_language = st.selectbox("Select target language", ["Hindi", "Spanish", "French", "Marathi"])
 
 # Display the selected languages
 st.write(f"Translating from **{from_language}** to **{to_language}**")
