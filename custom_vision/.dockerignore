@@ -1,0 +1,30 @@
+# Ignore virtual environments
+backend/venv/
+frontend/node_modules/
+
+# Ignore environment and config files
+.env
+config.env
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore logs and database files
+*.log
+*.sqlite3
+*.db
+*.csv
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore build artifacts
+backend/build/
+backend/dist/
+backend/*.egg-info/
+frontend/build/
+frontend/dist/

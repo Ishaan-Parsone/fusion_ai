@@ -1,0 +1,14 @@
+{
+  "pre_training": {
+    "input_hash": "b9536d6c49172449df93a208141201981a5ae88a480df2a112a8cf565e650985",
+    "computation_hash": "9cb04e8f8140061d88f3769776d83e810f91d4bdcde8feac41d99039e28eacd3",
+    "verification_key": "B4oH8zVuSMZsbBH2O1h4JajjvD_-unh0VDqWvMrOq9I=",
+    "timestamp": "2025-02-16T15:10:10.894771"
+  },
+  "post_training": {
+    "input_hash": "f4422456f36c752921d90331c3d5cdc8dea42467bb03bf4b818adf285880570b",
+    "computation_hash": "0c763af147e69b3d256d2ad17fc1fd97864905eab7a45a11aae28f82975e25fa",
+    "verification_key": "B4oH8zVuSMZsbBH2O1h4JajjvD_-unh0VDqWvMrOq9I=",
+    "timestamp": "2025-02-16T18:22:35.616905"
+  }
+}

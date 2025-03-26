@@ -27,16 +27,11 @@ def redact_text(text):
 
 def main():
     st.title("Redaction Tool")
-    option = st.radio("Choose Input Type:", ("PDF Upload", "Text Input", "CSV"))
+    option = st.radio("Input Type:", ( "Text Input"))
     
-    if option == "PDF Upload":
-        uploaded_file = st.file_uploader("Upload a PDF", type=["pdf"])
-        if uploaded_file:
-            extracted_text = process_pdf(uploaded_file)
-            redacted_text = redact_text(extracted_text)
-            st.download_button("Download Redacted PDF", redacted_text.encode("utf-8"), file_name="redacted.txt")
+   
     
-    elif option == "Text Input":
+    if option == "Text Input":
         user_text = st.text_area("Enter your text")
         if user_text:
             redacted_text = redact_text(user_text)
